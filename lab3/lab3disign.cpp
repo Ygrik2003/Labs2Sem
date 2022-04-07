@@ -3,6 +3,7 @@
 
 #include <myexception.h>
 #include <QIODevice>
+#include <QFileDialog>
 #include <QPainter>
 
 
@@ -22,33 +23,24 @@ lab3Disign::~lab3Disign()
 
 void lab3Disign::on_openButton_clicked()
 {
-    commandList.clear();
-    pathToFile = ui->pathFile->text();
+    pathToFile = QFileDialog::getOpenFileName(this, "", QDir::homePath(), tr("Text files (*.txt)"));
     QFile file(pathToFile);
-    QTextStream out(&file);
-    if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
-        throw MyException("FileOpenError", "You cannot open the file with path " + pathToFile);
-    } else {
-        fileText = out.readAll();
-        ui->commandText->clear();
-        ui->commandText->setText(fileText);
-    }
+    file.open(QIODevice::ReadWrite | QIODevice::Text);
+    fileText = file.readAll();
+    ui->commandText->clear();
+    ui->commandText->setText(fileText);
+
     file.close();
 }
 
 
 void lab3Disign::on_saveButton_clicked()
 {
-    pathToFile = ui->pathFile->text();
+    pathToFile = QFileDialog::getSaveFileName(this, "", QDir::homePath(), tr("Text files (*.txt)"));
     QFile file(pathToFile);
-    QTextStream in(&file);
-    if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
-        throw MyException("FileOpenError", "You cannot open the file with path " + pathToFile);
-    } else {
-        in << ui->commandText->toPlainText();
-        qDebug() << ui->commandText->toPlainText();
-
-    }
+    file.open(QIODevice::ReadWrite | QIODevice::Text);
+    file.resize(0);
+    file.write(ui->commandText->toPlainText().toUtf8());
     file.close();
 }
 
