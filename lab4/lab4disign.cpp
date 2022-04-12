@@ -24,7 +24,12 @@ void lab4Disign::on_openButton_clicked()
 {
     QString path = QFileDialog::getOpenFileName(this, "", QDir::homePath(), tr("Text files (*.txt)"));
     std::fstream file(path.toStdString());
+    std::fstream fileTemp(path.toStdString());
+    int i = 0;
+    while (!file.eof()) {
 
+        i++;
+    }
 }
 
 

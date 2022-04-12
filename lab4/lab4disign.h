@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QFileDialog>
 #include <fstream>
+#include <string>
+#include <vector>
 
 namespace Ui {
 class lab4Disign;
@@ -19,6 +21,7 @@ public:
 
 private:
     QString path;
+    std::vector<std::string> rows;
 
 
 private slots:
