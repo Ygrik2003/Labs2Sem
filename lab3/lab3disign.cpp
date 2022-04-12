@@ -60,13 +60,5 @@ void lab3Disign::on_drawButton_clicked()
     while(fileText != "") {
        commandList.append(pc.getCommand(fileText));
     }
-    qDebug() << commandList;
     lastPoint = lf.getArr(commandList);
 }
-
-
-
-//void lab3Disign::paintEvent(QPaintEvent *)
-//{
-
-//}

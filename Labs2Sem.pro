@@ -19,6 +19,8 @@ SOURCES += \
     lab3/linefield.cpp \
     lab3/parcecommand.cpp \
     lab4/lab4disign.cpp \
+    lab4/matrix.cpp \
+    lab4/matrixwidget.cpp \
     lab5/lab5disign.cpp \
     lab6/lab6disign.cpp \
     main.cpp \
@@ -36,6 +38,8 @@ HEADERS += \
     lab3/linefield.h \
     lab3/parcecommand.h \
     lab4/lab4disign.h \
+    lab4/matrix.h \
+    lab4/matrixwidget.h \
     lab5/lab5disign.h \
     lab6/lab6disign.h \
     mainwindow.h \
