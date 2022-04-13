@@ -9,6 +9,7 @@
 #include <qfile.h>
 #include <QVector>
 #include <qpainter.h>
+#include <cmath>
 
 namespace Ui {
 class lab3Disign;

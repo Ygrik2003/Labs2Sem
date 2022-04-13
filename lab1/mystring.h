@@ -12,7 +12,7 @@ public:
     MyString(std::string);
     MyString(MyChar*, int);
     MyString(int);
-    MyString(MyString &);
+    MyString(const MyString &);
     ~MyString();
 
     friend MyString operator+(MyString, MyString);
@@ -33,9 +33,9 @@ public:
 
     void setValue(MyChar*, int);
     void setValue(int);
-    MyChar *getValue();
-    QString getString();
-    int getLength();
+    MyChar *getValue() const;
+    QString getString() const;
+    int getLength() const;
 
     private:
     MyChar *value = new MyChar[1];

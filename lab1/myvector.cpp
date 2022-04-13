@@ -17,7 +17,7 @@ MyVector::MyVector(int size)
 {
     this->setValue(size);
 }
-MyVector::MyVector(MyVector &value)
+MyVector::MyVector(const MyVector &value)
 {
     this->setValue(value.getValue(), value.getLength());
 }
@@ -110,11 +110,11 @@ void MyVector::setValue(int length)
     this->value = new MyString[length];
 }
 
-MyString *MyVector::getValue()
+MyString *MyVector::getValue() const
 {
     return this->value;
 }
-int MyVector::getLength()
+int MyVector::getLength() const
 {
     return length;
 }

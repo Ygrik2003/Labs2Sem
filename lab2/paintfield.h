@@ -5,6 +5,7 @@
 #include <QGraphicsItem>
 #include <qpainter.h>
 #include <QLabel>
+#include <cmath>
 
 struct point {
     int x, y;

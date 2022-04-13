@@ -9,7 +9,7 @@ class MyChar
 public:
     MyChar(){};
     MyChar(char);
-    MyChar(MyChar &);
+    MyChar(const MyChar &);
 
     MyChar operator+(MyChar);
 
@@ -26,7 +26,7 @@ public:
 //    void operator delete[](void *);
 
     void setValue(char);
-    char getValue();
+    char getValue() const;
     MyChar lower();
 
 private:

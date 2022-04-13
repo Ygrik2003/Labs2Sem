@@ -7,7 +7,7 @@ MyChar::MyChar(char value)
 {
     this->value = value;
 }
-MyChar::MyChar(MyChar &value)
+MyChar::MyChar(const MyChar &value)
 {
     this->setValue(value.getValue());
 }
@@ -66,7 +66,7 @@ void MyChar::setValue(char value)
 {
     this->value = value;
 }
-char MyChar::getValue()
+char MyChar::getValue() const
 {
     return this->value;
 }
