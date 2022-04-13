@@ -37,3 +37,13 @@ void MatrixWidget::setSize(QSize size)
 {
     this->setGeometry(QRect(QPoint(this->x(), this->y()), size));
 }
+
+void MatrixWidget::setSizeMatrix(QSize)
+{
+
+}
+
+void MatrixWidget::setSizeMatrix(int, int)
+{
+
+}
