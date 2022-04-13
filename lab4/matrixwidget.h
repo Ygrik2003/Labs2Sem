@@ -10,10 +10,21 @@ class MatrixWidget : public QTableWidget
 public:
     MatrixWidget(QWidget *parent = nullptr);
     MatrixWidget(QSize, QWidget *parent = nullptr);
+    MatrixWidget(QSize, QSize, QWidget *parent = nullptr);
+    MatrixWidget(QSize, QPoint, QWidget *parent = nullptr);
+    MatrixWidget(QSize, QPoint, QSize, QWidget *parent = nullptr);
+    MatrixWidget(QSize, QRect, QWidget *parent = nullptr);
+
+    MatrixWidget(const MatrixWidget &);
+
+    void setPos(QPoint);
+    void setSize(QSize);
+    void setSizeMatrix(QSize);
+    void setSizeMatrix(int, int);
 
 private:
     QSize sizeMatrix;
-    QSize sizeWidget;
+
 };
 
 #endif // MATRIXWIDGET_H
