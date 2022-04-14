@@ -22,6 +22,7 @@ public:
 private:
     QString path;
     std::vector<std::string> rows;
+    std::vector<std::vector<int>> mat;
 
 
 private slots:

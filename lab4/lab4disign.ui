@@ -13,22 +13,6 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QWidget" name="MatrixGrid" native="true">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>570</width>
-     <height>570</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>14</pointsize>
-    </font>
-   </property>
-   <layout class="QGridLayout" name="gridLayout"/>
-  </widget>
   <widget class="QPushButton" name="openButton">
    <property name="geometry">
     <rect>
@@ -119,6 +103,17 @@ Determinant: </string>
    <property name="text">
     <string>Save As</string>
    </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>571</width>
+     <height>571</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="MatrixGrid"/>
   </widget>
  </widget>
  <resources/>
