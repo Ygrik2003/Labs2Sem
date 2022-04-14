@@ -38,10 +38,10 @@ Matrix &Matrix::operator+(Matrix matrix)
     if (this->matrix.size() != matrix.matrix.size())
         throw MatrixException("MatrixMathError", "You cannot summary matrix different size");
 
-    Matrix temp();
+    Matrix temp;
     for (int i = 0; i < this->matrix.size(); i++)
         for (int j = 0; j < this->matrix[i].size(); j++)
-            temp = this->matrix[i][j] + matrix[i][j];
+            temp[i][j] = this->matrix[i][j] + matrix[i][j];
 }
 
 MatrixException::MatrixException(QString err, QString info)

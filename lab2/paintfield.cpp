@@ -14,7 +14,7 @@ PaintField::PaintField(QWidget *parent) : QWidget(parent)
 void PaintField::mousePressEvent(QMouseEvent *event)
 {
     point temp;
-    float temp_distance = INFINITY;
+    float temp_distance = Q_INFINITY;
     if (points.length() == 0)
         temp.n = 1;
     else

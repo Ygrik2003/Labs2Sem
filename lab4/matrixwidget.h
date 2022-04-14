@@ -3,6 +3,9 @@
 
 #include <QTableWidget>
 #include <QWidget>
+#include <QLabel>
+
+#include "matrix.h"
 
 class MatrixWidget : public QTableWidget
 {
@@ -10,20 +13,20 @@ class MatrixWidget : public QTableWidget
 public:
     MatrixWidget(QWidget *parent = nullptr);
     MatrixWidget(QSize, QWidget *parent = nullptr);
-    MatrixWidget(QSize, QSize, QWidget *parent = nullptr);
-    MatrixWidget(QSize, QPoint, QWidget *parent = nullptr);
-    MatrixWidget(QSize, QPoint, QSize, QWidget *parent = nullptr);
-    MatrixWidget(QSize, QRect, QWidget *parent = nullptr);
+    MatrixWidget(QPoint, QWidget *parent = nullptr);
+    MatrixWidget(QPoint, QSize, QWidget *parent = nullptr);
+    MatrixWidget(QRect, QWidget *parent = nullptr);
 
     MatrixWidget(const MatrixWidget &);
 
     void setPos(QPoint);
     void setSize(QSize);
-    void setSizeMatrix(QSize);
-    void setSizeMatrix(int, int);
+
+    void setMatrix( Matrix & );
+    void setDet( float det );
 
 private:
-    QSize sizeMatrix;
+    QLabel *detLabel = nullptr;
 
 };
 

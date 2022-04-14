@@ -24,6 +24,9 @@ public:
     void setSize(int, int);
     void setSize(QSize);
 
+    int getRows(  ) { return matrix.size(); }
+    int getColumns(  ) { return matrix[0].size(); }
+
     QVector<float> &operator[](const int index);
     Matrix &operator+(Matrix);
     Matrix &operator-(Matrix);

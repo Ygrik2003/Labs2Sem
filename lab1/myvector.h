@@ -11,7 +11,7 @@ public:
     MyVector();
     MyVector(MyString *, int);
     MyVector(int);
-    MyVector(MyVector &);
+    MyVector(const MyVector &);
     ~MyVector();
 
     friend MyVector operator+(MyVector, MyVector);
@@ -31,8 +31,8 @@ public:
 
     void setValue(MyString*, int);
     void setValue(int);
-    MyString *getValue();
-    int getLength();
+    MyString *getValue() const;
+    int getLength() const;
 
 private:
     MyString *value = new MyString[1];

@@ -7,7 +7,7 @@ MyString::MyString()
 {
      this->setValue(1);
 }
-MyString::MyString(MyString &value)
+MyString::MyString(const MyString &value)
 {
     //for (int i = 0; i < value.length; i++) {
         this->setValue(value.getValue(), value.getLength());
@@ -214,12 +214,12 @@ void MyString::setValue(int length)
     this->value = new MyChar[length];
 }
 
-MyChar *MyString::getValue()
+MyChar *MyString::getValue() const
 {
     return this->value;
 }
 
-QString MyString::getString()
+QString MyString::getString() const
 {
     QString chars;
 
@@ -229,7 +229,7 @@ QString MyString::getString()
     return chars;
 }
 
-int MyString::getLength()
+int MyString::getLength() const
 {
     return this->length;
 }
