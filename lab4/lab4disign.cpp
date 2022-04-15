@@ -1,14 +1,24 @@
 #include "lab4disign.h"
 #include "ui_lab4disign.h"
 
+#include <QFont>
 #include <qlist.h>
+#include <qtextedit.h>
 
 lab4Disign::lab4Disign(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::lab4Disign)
 {
     ui->setupUi(this);
-    //ui->MatrixGrid->;
+    mat.resize(1);
+    mat[0].push_back(1);
+    QTextEdit *tempEdit;
+
+    tempEdit = new QTextEdit(QString::number(0));
+    tempEdit->setAlignment(Qt::AlignCenter);
+    tempEdit->setFont(QFont("Time New Roman", 15));
+    ui->MatrixGrid->addWidget(tempEdit, 0, 0);
+
 }
 
 lab4Disign::~lab4Disign()
@@ -18,15 +28,34 @@ lab4Disign::~lab4Disign()
 
 void lab4Disign::on_saveButton_clicked()
 {
-
+    QTextEdit *temp;
+    std::fstream file(path.toStdString(), std::ios::out | std::ios::trunc);
+    //qDebug() << rowsC << columnsC;
+    file.flush();
+    for (int i = 0; i < rowsC; i++) {
+        for (int j = 0; j < columnsC; j++) {
+            temp = (QTextEdit*)(ui->MatrixGrid->itemAtPosition(i, j)->widget());
+            file << temp->toPlainText().toStdString();
+            if (j != columnsC - 1)
+                 file << " ";
+        }
+        if (i != rowsC - 1)
+            file << std::endl;
+    }
+    file.close();
 }
 
 
 void lab4Disign::on_openButton_clicked()
 {
-    QString path = QFileDialog::getOpenFileName(this, "", QDir::homePath(), tr("Text files (*.txt)"));
+    for (int i = 0; i < rowsC; i++)
+        for (int j = 0; j < columnsC; j++) {
+            delete ui->MatrixGrid->itemAtPosition(i, j)->widget();
+        }
+    mat.resize(0);
+    rows.resize(0);
+    path = QFileDialog::getOpenFileName(this, "", QDir::homePath(), tr("Text files (*.txt)"));
     std::fstream file(path.toStdString());
-    std::fstream fileTemp(path.toStdString());
     int i = 0;
     std::string row;
     while (!file.eof()) {
@@ -35,21 +64,28 @@ void lab4Disign::on_openButton_clicked()
         i++;
     }
     int tempInt;
-    int counter;
+    int counter = 0;
     std::stringstream ss;
     mat.resize(rows.size());
+    QTextEdit *tempEdit;
     for (size_t i = 0; i < rows.size(); i++) {
         ss.clear();
         ss << rows[i];
         counter = 0;
+        mat[i].resize(0);
         while (ss.peek() != -1) {
             ss >> tempInt;
-            qDebug() << tempInt;
-            ui->MatrixGrid->addWidget(new QLabel(QString::number(tempInt)), i, counter);
+            tempEdit = new QTextEdit(QString::number(tempInt));
+            tempEdit->setAlignment(Qt::AlignCenter);
+            tempEdit->setFont(QFont("Time New Roman", 15));
+            ui->MatrixGrid->addWidget(tempEdit, i, counter);
+            ui->MatrixGrid->itemAt(i * rows.size() + counter)->widget();
             counter++;
             mat[i].push_back(tempInt);
         }
     }
+    rowsC = rows.size();
+    columnsC = counter;
 }
 
 int det(std::vector<std::vector<int>> m) {
@@ -75,24 +111,62 @@ int det(std::vector<std::vector<int>> m) {
 
 void lab4Disign::on_calcButton_clicked()
 {
+    QTextEdit *temp;
+    mat.resize(rowsC);
+    for (int i = 0; i < rowsC; i++) {
+        mat[i].resize(columnsC);
+        for (int j = 0; j < columnsC; j++) {
+            temp = (QTextEdit*)(ui->MatrixGrid->itemAtPosition(i, j)->widget());
+            mat[i][j] = temp->toPlainText().toInt();
+        }
     if (mat[0].size() == mat.size())
-        ui->infoLabel->setText(QString("Size: %1x%2\nDeterminant: %3").arg(QString::number(mat.size()), QString::number(mat.size()), QString::number(det(mat))));
+        ui->infoLabel->setText(QString("Determinant: %1").arg(QString::number(det(mat))));
     else
-        ui->infoLabel->setText(QString("Size: %1x%2\nDeterminant: Can't calculate").arg(QString::number(mat.size()), QString::number(mat[0].size())));
+        ui->infoLabel->setText(QString("Determinant: Can't calculate"));
+    }
 }
 
 
 void lab4Disign::on_saveAsButton_clicked()
 {
-    QString path = QFileDialog::getOpenFileName(this, "", QDir::homePath(), tr("Text files (*.txt)"));
-    std::fstream file(path.toStdString());
-
-    for (size_t i = 0; i < mat.size(); i++) {
-        for (size_t j = 0; j < mat[i].size(); j++) {
-            file << mat[i][j] << " ";
+    QTextEdit *temp;
+    path = QFileDialog::getOpenFileName(this, "", QDir::homePath(), tr("Text files (*.txt)"));
+    std::fstream file(path.toStdString(), std::ios::out | std::ios::trunc);
+    //qDebug() << rowsC << columnsC;
+    file.flush();
+    for (int i = 0; i < rowsC; i++) {
+        for (int j = 0; j < columnsC; j++) {
+            temp = (QTextEdit*)(ui->MatrixGrid->itemAtPosition(i, j)->widget());
+            file << temp->toPlainText().toStdString();
+            if (j != columnsC - 1)
+                 file << " ";
         }
-        file << std::endl;
+        if (i != rowsC - 1)
+            file << std::endl;
     }
+    file.close();
+}
 
+void lab4Disign::on_setSizeButton_clicked()
+{
+    rowsC = ui->RowsLine->text().toInt();
+    columnsC = ui->ColumnsLine->text().toInt();
+
+    QTextEdit *tempEdit;
+
+    for (size_t i = 0; i < mat.size(); i++)
+        for (size_t j = 0; j < mat[0].size(); j++) {
+            delete ui->MatrixGrid->itemAtPosition(i, j)->widget();
+        }
+    mat.resize(rowsC);
+    for (int i = 0; i < rowsC; i++) {
+        mat[i].resize(columnsC);
+        for (int j = 0; j < columnsC; j++) {
+            tempEdit = new QTextEdit(QString::number(0));
+            tempEdit->setAlignment(Qt::AlignCenter);
+            tempEdit->setFont(QFont("Time New Roman", 15));
+            ui->MatrixGrid->addWidget(tempEdit, i, j);
+        }
+    }
 }
 

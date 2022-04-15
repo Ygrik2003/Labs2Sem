@@ -71,9 +71,9 @@
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>90</y>
+     <y>360</y>
      <width>281</width>
-     <height>391</height>
+     <height>121</height>
     </rect>
    </property>
    <property name="font">
@@ -82,8 +82,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Size: 
-Determinant: </string>
+    <string>Determinant: </string>
    </property>
   </widget>
   <widget class="QPushButton" name="saveAsButton">
@@ -114,6 +113,93 @@ Determinant: </string>
     </rect>
    </property>
    <layout class="QGridLayout" name="MatrixGrid"/>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>582</x>
+     <y>110</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>MatrixSize:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="RowsLine">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>160</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="ColumnsLine">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>210</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>159</y>
+     <width>63</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Rows</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>209</y>
+     <width>63</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Columns</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="setSizeButton">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>260</y>
+     <width>83</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>SetSize</string>
+   </property>
   </widget>
  </widget>
  <resources/>
