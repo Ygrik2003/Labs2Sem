@@ -26,7 +26,7 @@ QPair<QChar, int> ParceCommand::getCommand(QString &commands)
         } else if (commands[i] == 'D') {
             command.first = 'D';
             i = i + 2;
-        } else if (commands[i] != '[') {
+        } else if (commands[i] != '[') { // [...]
             num += commands[i];
             i++;
             continue;
