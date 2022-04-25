@@ -18,10 +18,14 @@ class lab4Disign : public QWidget
 public:
     explicit lab4Disign(QWidget *parent = nullptr);
     ~lab4Disign();
+    int rowsC = 1;
+    int columnsC = 1;
+
 
 private:
     QString path;
     std::vector<std::string> rows;
+    std::vector<std::vector<int>> mat;
 
 
 private slots:
@@ -32,6 +36,8 @@ private slots:
     void on_calcButton_clicked();
 
     void on_saveAsButton_clicked();
+
+    void on_setSizeButton_clicked();
 
 private:
     Ui::lab4Disign *ui;

@@ -5,6 +5,7 @@
 #include <QGraphicsItem>
 #include <qpainter.h>
 #include <QLabel>
+#include <cmath>
 
 #include <cmath>
 

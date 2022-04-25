@@ -44,4 +44,10 @@ void MatrixWidget::setDet(float det)
         delete detLabel;
     detLabel = new QLabel( QString::number(det) );
     detLabel->setGeometry( this->cellWidget(0, 0)->size().width() * this->rowCount() / 2, this->cellWidget(0, 0)->size().height() * this->columnCount(), detLabel->size().width(), detLabel->size().height() );
+
+void MatrixWidget::setSizeMatrix(QSize)
+{
+
 }
+
+
