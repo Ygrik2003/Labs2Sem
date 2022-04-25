@@ -4,6 +4,7 @@
 #include <QPen>
 #include <QWidget>
 
+
 namespace Ui {
 class lab5Disign;
 }
@@ -15,7 +16,6 @@ class lab5Disign : public QWidget
 public:
     explicit lab5Disign(QWidget *parent = nullptr);
     ~lab5Disign();
-    QSize sizePlot();
     float firstFuncY(float);
     float secondFuncX(float);
     int step = 40;
@@ -29,7 +29,6 @@ public:
 
 private slots:
     void on_plotButton_clicked();
-
 private:
     Ui::lab5Disign *ui;
 };
